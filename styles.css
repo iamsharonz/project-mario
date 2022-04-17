@@ -1,0 +1,269 @@
+/* classes always atarts with a dot */
+header {
+  background-color: red;
+  padding: 20px;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  /* z-index bring things forward, i.e, here the header is displayed below the mario image(first image) after the above steps, so to make the header to come forward we use z-index */
+  z-index: 1;
+  /* z-index for all elements are 0 by default, so by using a positive value the element gets pushed forward */
+  /* to get rid of the small spaces on top, left & right side of the header */
+  top: 0;
+  left: 0;
+}
+/* to target the main heading in the center */
+header h1 {
+  color: white;
+  border: 8px solid white;
+  /* 6px to the top & bottom and 12px to the left & right */
+  padding: 6px 12px;
+  /* cant use padding & margin properly for inline-elements, so we use inline-blocks */
+  display: inline-block; /* to prevent the border from taking full width */
+  border-radius: 40px;
+}
+
+.banner {
+  position: relative;
+}
+
+/* first mario image */
+.banner img {
+  max-width: 100%;
+}
+/* the parent elemet should have a position property i.e, not static */
+/* banner is the parent class of welcome & is positioned relative */
+/* in absolute positioning we take it out of the normal document flow */
+.banner .welcome {
+  background-color: #feb614;
+  color: white;
+  padding: 30px;
+  position: absolute;
+  left: 0;
+  /* using % value instead of px will make it more responsive  */
+  top: 30%;
+}
+/* to target the writing on the banner (welcome to marioclub) */
+.banner h2 {
+  font-size: 74px;
+}
+/* to target the word MarioClub */
+.welcome span {
+  /* while using ems it takes the font-size value of the parent i.e, 74 * 1.3 */
+  font-size: 1.3em;
+}
+
+/* to style the a tags */
+nav {
+  background-color: #f4f4f4;
+  padding: 20px;
+  position: sticky;
+  top: 100px;
+}
+/* parent of li*/
+nav ul {
+  white-space: nowrap; /* as the 4th anchor tag of li will go to the next line on executing the below display & width (nav li), so it is used to align all the 4 anchor tags in  a single line */
+  max-width: 1200px;
+  margin: 0 auto;
+  /* margin of auto left & right */
+}
+nav li {
+  width: 25%;
+  display: inline-block; /*to sit next to each other*/
+  font-size: 24px;
+}
+
+nav li a {
+  text-decoration: none;
+  color: #4b4b4b;
+}
+nav li a.join {
+  color: rgba(232, 45, 45, 0.66);
+  padding: 0;
+}
+
+/* just to override the default user style sheets provided by the browser to the diff elements */
+body,
+ul,
+li,
+h1,
+h2,
+a {
+  margin: 0;
+  padding: 0;
+  font-family: arial;
+}
+
+main {
+  /* to prevent it from going off the page in some case */
+  max-width: 100%;
+  width: 1200px;
+  /* seems contradictory, but the point is: on a screen of 2000px width it will take 1200px only & on a screen of 800px, it will take 100% width */
+  margin: 80px auto;
+  /* margin equally distributed on left & right */
+  padding: 0 40px;
+  /* on adding the padding, even though the max-width is set as 100%, the writings in the paragraph still goes out of page i.e, the padding is added on top of it and it goes out of page. So to prevent it we use box-sizing, so that the max-width can be 100% inclusive of the padding */
+  box-sizing: border-box;
+}
+
+article h2 {
+  color: #f63232;
+  font-size: 50px;
+}
+article p {
+  line-height: 2em;
+  /* it takes the font-size of p tag & will multiply it by 2 */
+  color: #4b4b4b;
+}
+
+.images {
+  text-align: center;
+  margin: 80px 0;
+  white-space: nowrap;
+  /* this is needed, cause the images wont sit next to each other on executing the below statements (stmnts of .images li & .images li img) */
+}
+.images li {
+  /* to make them to sit next to each other, so that we can use margin & padding correctly */
+  display: inline-block;
+  width: 40%;
+  margin: 20px 5%;
+}
+.images li img {
+  max-width: 100%;
+  /* i.e, the max width actually will be that of its parent tag i.e, 40% hence the img will become smaller */
+}
+
+.join {
+  background: #f4f4f4;
+  text-align: center;
+  padding: 60px 20px;
+  color: #4b4b4b;
+}
+.join h2 {
+  font-size: 40px;
+}
+form input {
+  margin: 20px 0;
+  padding: 20px 20px;
+  font-size: 25px;
+  border-radius: 28px;
+  border: 4px solid white;
+}
+
+footer {
+  background: #f63232;
+  color: white;
+  padding: 10px; /* all the way around */
+  text-align: center;
+}
+
+/* PSeudo Classes */
+
+/* while hovering over the anchor tags */
+nav li a:hover {
+  text-decoration: underline;
+}
+
+/* not to target the image, but to target the li tag that holds the image */
+.images li:hover {
+  /* to make them jump */
+  position: relative;
+  top: -8px;
+}
+/* chamges apply when the form is clicked */
+form input:focus {
+  border: 4px dashed #4b4b4b;
+  outline: none; /* to remove the default border which appears alongside oru created border */
+}
+
+/* here valid means correct email format */
+form input:valid {
+  border: 4px solid green;
+}
+
+/* here first first child of the ul tag, i.e, the first anchor tag is targeted */
+/* nav li:first-child {
+  border: 5px solid green;
+} */
+
+/* ul li a:first-child {
+  background-color: blue;
+} */
+/* for more pseudo classes :- https://www.w3schools.com/css/css_pseudo_classes.asp */
+
+/* double colon, :: is used for pseudo elements */
+article p::first-line {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+section.join p::first-letter {
+  font-size: 1.5em;
+}
+/* on selecting the text */
+p::selection {
+  background-color: #f63232;
+  color: white;
+}
+/* to add something after, content contains the string to be added */
+p::after {
+  content: "...";
+}
+
+/* Responsive Design */
+
+@media screen and (max-width: 1160px) {
+  /*applies to this width & below  */
+  .banner .welcome h2 {
+    font-size: 40px;
+  }
+  nav li {
+    font-size: 18px;
+  }
+}
+/* the min-width is 800px & it will apply from the range of 800px & above it wont apply to screens with size below 800px */
+@media screen and (max-width: 746px) {
+  .banner .welcome h2 {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 595px) {
+  .banner .welcome {
+    /* relative positioning is given as it will go back to its original pos & the given absolute value was the one keeping the banner on top of the mario image. we can also use static instead of relative */
+    position: relative;
+    text-align: center;
+    padding: 10px;
+  }
+  .banner .welcome br {
+    /* we have initially given a br tag between the welcome banner msg, so when the screen is at this size we need to make the welcome msg all in one line, so we need to somehow deactivate the br tag */
+    display: none;
+  }
+  .banner .welcome h2 {
+    font-size: 25px;
+  }
+  div.welcome span /* or   .banner .welcome span */ {
+    font-size: 1em;
+  }
+  .images li {
+    /* the width of the li tag, which holds the img is 40%, so we need to make it 100 as we need the 2 images not to sit next to each other */
+    width: 100%;
+    margin: 20px auto;
+    display: block; /* as it was inline-block b4, so they sat next to each other */
+  }
+}
+/* what does margin auto do */
+
+@media screen and (max-width: 571px) {
+  nav li {
+    font-size: 20px;
+    display: block;
+    width: 100%;
+    margin: 12px 0;
+  }
+  header {
+    position: relative;
+  }
+  nav {
+    top: 0;
+  }
+}

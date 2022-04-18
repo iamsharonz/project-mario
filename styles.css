@@ -247,11 +247,10 @@ p::after {
   .images li {
     /* the width of the li tag, which holds the img is 40%, so we need to make it 100 as we need the 2 images not to sit next to each other */
     width: 100%;
-    margin: 20px auto;
+    margin: 20px auto; /* auto will divide the margin equally for both left & right */
     display: block; /* as it was inline-block b4, so they sat next to each other */
   }
 }
-/* what does margin auto do */
 
 @media screen and (max-width: 571px) {
   nav li {
